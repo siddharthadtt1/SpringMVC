@@ -16,7 +16,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- <bean name="/welcome" class="org.practice.controller.HelloController" 
 		/> -->
 
-	<context:component-scan base-package="org.practice.controller" />
+	<context:component-scan base-package="org.practice" />
 	
 	<mvc:annotation-driven />
 
@@ -34,5 +34,12 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<property name="basename" value="/WEB-INF/messages/student_validation" />
 		<property name="cacheSeconds" value="1"/>
 	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admission"/>
+			<bean class="org.practice.interceptor.WeekdayInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

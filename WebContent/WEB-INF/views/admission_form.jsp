@@ -12,7 +12,7 @@
 
 	<h4 style="color: red"><form:errors path="student1.*" /></h4>
 
-	<form action="/Spring_MVC/admissionRequest" method="post">
+	<form action="/SpringMVC/admissionRequest" method="post">
 		<table>
 			<tr>
 				<td><label for="nameId">Name : </label><input type="text"

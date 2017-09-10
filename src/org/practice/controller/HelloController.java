@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -73,7 +74,11 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/admission")
-	public ModelAndView admissionForm() {
+	public ModelAndView admissionForm() throws Exception{
+		String exception = "NULL_POINTER";
+		if(exception.equalsIgnoreCase(exception)){
+			throw new NullPointerException("Null pointer exception has occured");
+		}
 		ModelAndView modelAndView = new ModelAndView("admission_form");
 		return modelAndView;
 	}
@@ -81,6 +86,8 @@ public class HelloController {
 	@RequestMapping(value = "/admissionRequest", method = RequestMethod.POST)
 	public ModelAndView processAdmissionRequest(@Valid @ModelAttribute("student1") Student student,
 			BindingResult bindingResult) {
+		
+		System.out.println("Received model attribute as : " + student.toString());
 
 		if (bindingResult.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("admission_form");

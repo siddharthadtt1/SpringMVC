@@ -1,12 +1,12 @@
 package org.practice.dto;
 
-import or.practice.customvalidation.IsValidCountry;
+import org.practice.customvalidation.IsValidCountry;
 
 public class Address {
-	
+
 	@IsValidCountry
 	private String country;
-	
+
 	private String city;
 	private int streetNo;
 	private Long pincode;
@@ -42,5 +42,5 @@ public class Address {
 	public void setPincode(Long pincode) {
 		this.pincode = pincode;
 	}
-	
+
 }
